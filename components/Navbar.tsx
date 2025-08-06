@@ -23,13 +23,13 @@ export default function Navbar() {
 
                 <div className="hidden lg:block">
                     <ul className="flex text-base font-medium tracking-wide gap-8">
-                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200">
+                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200 animate-great-slide-up [animation-delay:150ms] opacity-0">
                             Home
                         </li>
 
-                        <li className="relative group cursor-pointer">
+                        <li className="relative group cursor-pointer animate-great-slide-up [animation-delay:300ms] opacity-0">
                             <div className="flex items-center justify-center gap-2 transition-colors duration-200 group-hover:text-orange-500">
-                                <p>Pages</p>
+                                <p className="animate-great-slide-up [animation-delay:300ms] opacity-0">Pages</p>
                                 <ChevronDown
                                     size={18}
                                     className="transition-transform duration-300 group-hover:rotate-180"
@@ -45,10 +45,11 @@ export default function Navbar() {
                                     "Contact",
                                     "Blog",
                                     "Post",
-                                ].map((item) => (
+                                ].map((item, index) => (
                                     <li
                                         key={item}
-                                        className="px-3 py-1 hover:text-orange-500 transition-colors duration-200"
+                                        className="px-3 py-1 hover:text-orange-500 transition-colors duration-200 animate-great-slide-up"
+                                        style={{ animationDelay: `${450 + index * 100}ms`, opacity: 0 }}
                                     >
                                         {item}
                                     </li>
@@ -56,10 +57,10 @@ export default function Navbar() {
                             </ul>
                         </li>
 
-                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200">
+                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200 animate-great-slide-up [animation-delay:450ms] opacity-0">
                             Packages
                         </li>
-                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200">
+                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200 animate-great-slide-up [animation-delay:600ms] opacity-0">
                             Destination
                         </li>
                     </ul>
@@ -70,14 +71,14 @@ export default function Navbar() {
                         size={24}
                         className="transition-transform duration-300 hover:rotate-180"
                     />
-                    <p className="text-xl lg:text-2xl font-medium">Nomad</p>
+                    <p className="text-xl lg:text-2xl font-medium animate-great-slide-up [animation-delay:750ms] opacity-0">Nomad</p>
                 </div>
 
                 <div className="hidden lg:flex justify-center items-center h-full text-[1.1rem] gap-2.5">
-                    <span className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 cursor-pointer">
+                    <span className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 cursor-pointer animate-great-slide-up [animation-delay:900ms] opacity-0">
                         Blog
                     </span>
-                    <span className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg bg-orange-500 hover:bg-orange-600 text-white transition-all duration-200 cursor-pointer">
+                    <span className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg bg-orange-500 hover:bg-orange-600 text-white transition-all duration-200 cursor-pointer animate-great-slide-up [animation-delay:1050ms] opacity-0">
                         Contact
                     </span>
                 </div>
@@ -87,7 +88,7 @@ export default function Navbar() {
                 <div className="flex items-center justify-between p-6 border-b">
                     <div className="flex items-center gap-2">
                         <CompassIcon size={24} />
-                        <span className="text-xl font-medium">Nomad</span>
+                        <span className="text-xl font-medium animate-great-slide-up [animation-delay:150ms] opacity-0">Nomad</span>
                     </div>
                     <button
                         onClick={toggleMenu}
@@ -98,14 +99,14 @@ export default function Navbar() {
                 </div>
 
                 <nav className="flex flex-col p-6 space-y-1">
-                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200">
+                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200 animate-great-slide-up [animation-delay:300ms] opacity-0">
                         Home
                     </a>
 
                     <div className="py-3">
                         <button
                             onClick={togglePages}
-                            className="flex items-center justify-between w-full px-4 py-0 text-base font-medium hover:text-orange-500 transition-colors duration-200"
+                            className="flex items-center justify-between w-full px-4 py-0 text-base font-medium hover:text-orange-500 transition-colors duration-200 animate-great-slide-up [animation-delay:450ms] opacity-0"
                         >
                             <span>Pages</span>
                             <ChevronDown
@@ -123,11 +124,12 @@ export default function Navbar() {
                                     "Contact",
                                     "Blog",
                                     "Post",
-                                ].map((item) => (
+                                ].map((item, index) => (
                                     <a
                                         key={item}
                                         href="#"
-                                        className="block py-2 px-4 text-sm text-gray-600 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-all duration-200"
+                                        className="block py-2 px-4 text-sm text-gray-600 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-all duration-200 animate-great-slide-up"
+                                        style={{ animationDelay: `${600 + index * 100}ms`, opacity: 0 }}
                                     >
                                         {item}
                                     </a>
@@ -136,19 +138,19 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200">
+                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200 animate-great-slide-up [animation-delay:1350ms] opacity-0">
                         Packages
                     </a>
-                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200">
+                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200 animate-great-slide-up [animation-delay:1500ms] opacity-0">
                         Destination
                     </a>
                 </nav>
 
                 <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-3">
-                    <button className="py-3 px-6 text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200">
+                    <button className="py-3 px-6 text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200 animate-great-slide-up [animation-delay:1650ms] opacity-0">
                         Blog
                     </button>
-                    <button className="py-3 px-6 text-base font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-all duration-200">
+                    <button className="py-3 px-6 text-base font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-all duration-200 animate-great-slide-up [animation-delay:1800ms] opacity-0">
                         Contact
                     </button>
                 </div>
@@ -160,6 +162,22 @@ export default function Navbar() {
                     onClick={toggleMenu}
                 />
             )}
+
+            <style jsx>{`
+                @keyframes great-slide-up {
+                    0% {
+                        opacity: 0;
+                        transform: translateY(30px) scale(0.95);
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                    }
+                }
+                .animate-great-slide-up {
+                    animation: great-slide-up 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+                }
+            `}</style>
         </>
     );
 }

@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import { Mouse } from "lucide-react";
 
@@ -17,11 +18,11 @@ export default function HeroSection() {
 
       <div className="relative z-10 flex flex-col lg:hidden items-center justify-center text-center text-white px-4 py-12 sm:py-16 space-y-8 sm:space-y-10 min-h-[600px] sm:min-h-[700px]">
         <div className="space-y-2">
-          <p className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[0.9] tracking-tight">Find Your</p>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[0.9] tracking-tight">Perfect</h1>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[0.9] tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Destination</h1>
+          <p className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[0.9] tracking-tight animate-great-slide-up [animation-delay:150ms] opacity-0">Find Your</p>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[0.9] tracking-tight animate-great-slide-up [animation-delay:300ms] opacity-0">Perfect</h1>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[0.9] tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent animate-great-slide-up [animation-delay:450ms] opacity-0">Destination</h1>
         </div>
-        <p className="text-lg sm:text-xl max-w-sm sm:max-w-lg px-2 font-light leading-relaxed text-gray-100">
+        <p className="text-lg sm:text-xl max-w-sm sm:max-w-lg px-2 font-light leading-relaxed text-gray-100 animate-great-slide-up [animation-delay:600ms] opacity-0">
           Discover breathtaking destinations, plan your perfect itinerary,
           and book your trip with ease all in one place.
         </p>
@@ -47,28 +48,28 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="flex items-center justify-center px-4 py-4 text-black">
-            <p className="font-semibold text-center text-sm sm:text-base leading-tight">
+            <p className="font-semibold text-center text-sm sm:text-base leading-tight animate-great-slide-up [animation-delay:750ms] opacity-0">
               12K+ Membership <br />
-              <span className="text-gray-600 font-medium">enjoy our facility</span>
+              <span className="text-gray-600 font-medium animate-great-slide-up [animation-delay:900ms] opacity-0">enjoy our facility</span>
             </p>
           </div>
         </div>
 
         <div className="flex items-center justify-center gap-2 cursor-pointer text-white">
           <Mouse size={20} className="sm:w-[22px] sm:h-[22px]" />
-          <span className="text-base sm:text-lg font-medium">Get Started</span>
+          <span className="text-base sm:text-lg font-medium animate-great-slide-up [animation-delay:1050ms] opacity-0">Get Started</span>
         </div>
       </div>
 
       <div className="hidden lg:flex relative z-10 flex-col items-end justify-start h-full text-white text-left mt-40 mr-34">
         <div>
           <div className="font-semibold">
-            <p className="text-[6.5rem] leading-[100%]">Find Your</p>
-            <h1 className="text-[6.5rem] leading-[100%]">Perfect</h1>
-            <h1 className="text-[6.5rem] leading-[100%]">Destination</h1>
+            <p className="text-[6.5rem] leading-[100%] animate-great-slide-up [animation-delay:150ms] opacity-0">Find Your</p>
+            <h1 className="text-[6.5rem] leading-[100%] animate-great-slide-up [animation-delay:300ms] opacity-0">Perfect</h1>
+            <h1 className="text-[6.5rem] leading-[100%] animate-great-slide-up [animation-delay:450ms] opacity-0">Destination</h1>
           </div>
           <div className="leading-[100%] mt-6">
-            <p className="text-lg">
+            <p className="text-lg animate-great-slide-up [animation-delay:600ms] opacity-0">
               Discover breathtaking destinations, plan your perfect <br />
               itinerary, and book your trip with ease all in one place.
             </p>
@@ -97,7 +98,7 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="flex items-center pl-3 text-black">
-          <p className="font-medium leading-tight">
+          <p className="font-medium leading-tight animate-great-slide-up [animation-delay:750ms] opacity-0">
             12K+ Membership <br />
             enjoy our facility
           </p>
@@ -106,8 +107,24 @@ export default function HeroSection() {
 
       <div className="hidden lg:flex absolute bottom-14 right-28 z-10 items-center gap-2 cursor-pointer text-white">
         <Mouse size={22} />
-        <span className="text-lg">Get Started</span>
+        <span className="text-lg animate-great-slide-up [animation-delay:900ms] opacity-0">Get Started</span>
       </div>
+
+      <style jsx>{`
+        @keyframes great-slide-up {
+          0% {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        .animate-great-slide-up {
+          animation: great-slide-up 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+      `}</style>
     </section>
   );
 }

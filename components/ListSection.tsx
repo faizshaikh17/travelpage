@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import { CalendarDays, Star, Umbrella } from "lucide-react";
 
@@ -41,8 +42,8 @@ export default function HeroSection() {
     return (
         <section className="relative w-full min-h-[700px] space-y-8 sm:space-y-12 lg:space-y-16 sm:min-h-[800px] lg:h-[900px] overflow-hidden px-4 sm:px-8 lg:px-28 py-16 sm:py-24 lg:py-36 rounded-2xl">
             <div className="flex flex-col sm:flex-row w-full justify-between items-start sm:items-center gap-4 sm:gap-0">
-                <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%]">Fuel Your Wanderlust</p>
-                <button className="py-3 px-6 text-sm sm:text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200 whitespace-nowrap">
+                <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%] animate-pop-in [animation-delay:100ms] opacity-0">Fuel Your Wanderlust</p>
+                <button className="py-3 px-6 text-sm sm:text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200 whitespace-nowrap animate-pop-in [animation-delay:200ms] opacity-0">
                     View more
                 </button>
             </div>
@@ -63,27 +64,27 @@ export default function HeroSection() {
                                 quality={85}
                             />
 
-                            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-white text-xs sm:text-sm font-medium text-black px-2 sm:px-3 py-1 rounded-md shadow-sm">
+                            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-white text-xs sm:text-sm font-medium text-black px-2 sm:px-3 py-1 rounded-md shadow-sm animate-pop-in [animation-delay:300ms] opacity-0">
                                 {item.country}
                             </div>
                         </div>
 
                         <div className="flex flex-col justify-between py-3 sm:py-4 space-y-3 sm:space-y-4">
                             <div className="space-y-3 sm:space-y-4">
-                                <p className="text-xl sm:text-2xl font-semibold text-neutral-800 leading-tight">{item.title}</p>
-                                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">{item.description}</p>
+                                <p className="text-xl sm:text-2xl font-semibold text-neutral-800 leading-tight animate-pop-in [animation-delay:400ms] opacity-0">{item.title}</p>
+                                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed animate-pop-in [animation-delay:500ms] opacity-0">{item.description}</p>
                                 <div className="text-xs flex flex-wrap items-center justify-start gap-1 sm:gap-2 text-neutral-600">
-                                    <span className="flex items-center gap-1">
+                                    <span className="flex items-center gap-1 animate-pop-in [animation-delay:600ms] opacity-0">
                                         <CalendarDays size={14} className="sm:w-4 sm:h-4 text-black" />
                                         <span className="text-xs">{item.date}</span>
                                     </span>
                                     <span className="text-neutral-400">|</span>
-                                    <span className="flex items-center gap-1">
+                                    <span className="flex items-center gap-1 animate-pop-in [animation-delay:700ms] opacity-0">
                                         <Star size={14} className="sm:w-4 sm:h-4 text-black" />
                                         <span className="text-xs">{item.rating}</span>
                                     </span>
                                     <span className="text-neutral-400">|</span>
-                                    <span className="flex items-center gap-1">
+                                    <span className="flex items-center gap-1 animate-pop-in [animation-delay:800ms] opacity-0">
                                         <Umbrella size={14} className="sm:w-4 sm:h-4 text-black" />
                                         <span className="text-xs">{item.type}</span>
                                     </span>
@@ -91,13 +92,13 @@ export default function HeroSection() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 pt-2">
-                                <div className="text-neutral-900 font-semibold text-sm sm:text-base leading-tight">
+                                <div className="text-neutral-900 font-semibold text-sm sm:text-base leading-tight animate-pop-in [animation-delay:900ms] opacity-0">
                                     {item.price} <br />
-                                    <span className="text-xs sm:text-sm text-neutral-500 font-normal">
+                                    <span className="text-xs sm:text-sm text-neutral-500 font-normal animate-pop-in [animation-delay:1000ms] opacity-0">
                                         {item.duration}
                                     </span>
                                 </div>
-                                <button className="w-full sm:w-auto py-2 sm:py-3 px-4 sm:px-6 text-sm sm:text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200">
+                                <button className="w-full sm:w-auto py-2 sm:py-3 px-4 sm:px-6 text-sm sm:text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200 animate-pop-in [animation-delay:1100ms] opacity-0">
                                     Book now
                                 </button>
                             </div>
@@ -105,6 +106,26 @@ export default function HeroSection() {
                     </div>
                 ))}
             </div>
+
+            <style jsx>{`
+                @keyframes pop-in {
+                    0% {
+                        opacity: 0;
+                        transform: translateX(-10px) scale(0.9);
+                    }
+                    60% {
+                        opacity: 0.7;
+                        transform: translateX(5px) scale(1.05);
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: translateX(0) scale(1);
+                    }
+                }
+                .animate-pop-in {
+                    animation: pop-in 0.5s cubic-bezier(0.4, 0, 0.2, 1.5) forwards;
+                }
+            `}</style>
         </section>
     );
 }
