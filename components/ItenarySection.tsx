@@ -38,7 +38,7 @@ export default function ItenarySection() {
                     <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%]">One Click Away</p>
                 </div>
                 <p className="text-sm sm:text-base lg:text-lg max-w-full sm:max-w-sm lg:max-w-lg px-0 sm:px-2 font-light leading-relaxed text-neutral-500">
-                    Curated luxury escapes designed to recharge your soul. From serene beaches to five-star retreats, we'll get you there in style.
+                    Curated luxury escapes designed to recharge your soul. From serene beaches to five-star retreats, we&apos;ll get you there in style.
                 </p>
             </div>
 
