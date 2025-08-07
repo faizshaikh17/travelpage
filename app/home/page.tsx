@@ -5,6 +5,7 @@ import ItenarySection from "@/components/ItenarySection";
 import BookNow from "@/components/BookNow";
 import Destination from "@/components/Destination";
 import Questions from "@/components/Questions";
+import Blogs from "@/components/Blogs"
 
 export default function Home() {
     return (
@@ -17,6 +18,7 @@ export default function Home() {
                 <BookNow />
                 <Destination />
                 <Questions />
+                <Blogs />
             </main>
         </>
     );
