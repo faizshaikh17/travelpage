@@ -2,6 +2,10 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ListSection from "@/components/ListSection";
 import ItenarySection from "@/components/ItenarySection";
+import BookNow from "@/components/BookNow";
+import Destination from "@/components/Destination";
+import Questions from "@/components/Questions";
+
 export default function Home() {
     return (
         <>
@@ -10,6 +14,9 @@ export default function Home() {
                 <HeroSection />
                 <ListSection />
                 <ItenarySection />
+                <BookNow />
+                <Destination />
+                <Questions />
             </main>
         </>
     );
