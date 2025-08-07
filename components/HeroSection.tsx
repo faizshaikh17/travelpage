@@ -28,7 +28,7 @@ export default function HeroSection() {
         </p>
 
         <div className="w-full max-w-sm sm:max-w-md bg-white/95 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border border-white/20 flex flex-col sm:flex-row">
-          <div className="relative w-full sm:w-36 aspect-video sm:aspect-auto sm:h-42 m-2 rounded-2xl overflow-hidden">
+          <div className="relative sm:w-36 aspect-video sm:aspect-auto sm:h-42 m-2 rounded-2xl overflow-hidden">
             <Image
               src="/Images/hero2.webp"
               alt="hero"

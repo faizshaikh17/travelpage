@@ -1,17 +1,36 @@
 'use client'
 import { ChevronDown, CompassIcon, Menu, X } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isPagesOpen, setIsPagesOpen] = useState(false);
+    const pathname = usePathname();
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const togglePages = () => setIsPagesOpen(!isPagesOpen);
 
+    const navItems = [
+        { name: "Home", href: "/home" },
+        { name: "Packages", href: "/packages" },
+        { name: "Destination", href: "/destination" },
+    ];
+
+    const pageLinks = [
+        { name: "About", href: "/about" },
+        { name: "Services", href: "/services" },
+        { name: "Single Destination", href: "/single-destination" },
+        { name: "Testimonials", href: "/testimonials" },
+        { name: "Contact", href: "/contact" },
+        { name: "Blog", href: "/blog" },
+        { name: "Post", href: "/post" },
+    ];
+
     return (
         <>
-            <header className="flex px-4 sm:px-8 lg:px-28 h-16 lg:h-18 py-2.5 items-center justify-between relative">
+            <header className="flex z-50 px-4 sm:px-8 lg:px-28 h-16 lg:h-18 py-2.5 items-center justify-between relative">
                 <div className="lg:hidden">
                     <button
                         onClick={toggleMenu}
@@ -23,45 +42,35 @@ export default function Navbar() {
 
                 <div className="hidden lg:block">
                     <ul className="flex text-base font-medium tracking-wide gap-8">
-                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200 animate-great-slide-up [animation-delay:150ms] opacity-0">
-                            Home
-                        </li>
+                        {navItems.map((item, index) => (
+                            <li
+                                key={item.name}
+                                className={`hover:text-orange-500 cursor-pointer transition-colors duration-200 animate-great-slide-up [animation-delay:${150 + index * 150}ms] opacity-0 ${pathname === item.href ? "text-orange-500" : ""}`}
+                            >
+                                <Link href={item.href}>{item.name}</Link>
+                            </li>
+                        ))}
 
-                        <li className="relative group cursor-pointer animate-great-slide-up [animation-delay:300ms] opacity-0">
+                        <li className="relative group cursor-pointer animate-great-slide-up [animation-delay:450ms] opacity-0">
                             <div className="flex items-center justify-center gap-2 transition-colors duration-200 group-hover:text-orange-500">
-                                <p className="animate-great-slide-up [animation-delay:300ms] opacity-0">Pages</p>
+                                <p>Pages</p>
                                 <ChevronDown
                                     size={18}
                                     className="transition-transform duration-300 group-hover:rotate-180"
                                 />
                             </div>
 
-                            <ul className="absolute text-base opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-1 transition-all duration-300 top-full mt-2 w-48 bg-white shadow-md rounded-md z-10">
-                                {[
-                                    "About",
-                                    "Services",
-                                    "Single Destination",
-                                    "Testimonials",
-                                    "Contact",
-                                    "Blog",
-                                    "Post",
-                                ].map((item, index) => (
+                            <ul className="absolute text-base opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-1 transition-all duration-300 top-full mt-2 w-56 py-6 px-3 bg-white shadow-md rounded-md z-10">
+                                {pageLinks.map((item, index) => (
                                     <li
-                                        key={item}
-                                        className="px-3 py-1 hover:text-orange-500 transition-colors duration-200 animate-great-slide-up"
+                                        key={item.name}
+                                        className={`px-3 py-1 hover:text-orange-500 transition-colors duration-200 animate-great-slide-up ${pathname === item.href ? "text-orange-500" : ""}`}
                                         style={{ animationDelay: `${450 + index * 100}ms`, opacity: 0 }}
                                     >
-                                        {item}
+                                        <Link href={item.href}>{item.name}</Link>
                                     </li>
                                 ))}
                             </ul>
-                        </li>
-
-                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200 animate-great-slide-up [animation-delay:450ms] opacity-0">
-                            Packages
-                        </li>
-                        <li className="hover:text-orange-500 cursor-pointer transition-colors duration-200 animate-great-slide-up [animation-delay:600ms] opacity-0">
-                            Destination
                         </li>
                     </ul>
                 </div>
@@ -75,6 +84,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden lg:flex justify-center items-center h-full text-[1.1rem] gap-2.5">
+                    {/* Do not change these two */}
                     <span className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 cursor-pointer animate-great-slide-up [animation-delay:900ms] opacity-0">
                         Blog
                     </span>
@@ -99,14 +109,20 @@ export default function Navbar() {
                 </div>
 
                 <nav className="flex flex-col p-6 space-y-1">
-                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200 animate-great-slide-up [animation-delay:300ms] opacity-0">
-                        Home
-                    </a>
+                    {navItems.map((item, index) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            className={`py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-400 animate-great-slide-up [animation-delay:${300 + index * 150}ms] opacity-0 ${pathname === item.href ? "text-orange-500" : ""}`}
+                        >
+                            {item.name}
+                        </Link>
+                    ))}
 
                     <div className="py-3">
                         <button
                             onClick={togglePages}
-                            className="flex items-center justify-between w-full px-4 py-0 text-base font-medium hover:text-orange-500 transition-colors duration-200 animate-great-slide-up [animation-delay:450ms] opacity-0"
+                            className="flex items-center justify-between w-full px-4 py-0 text-base font-medium hover:text-orange-500 transition-colors duration-400 animate-great-slide-up [animation-delay:600ms] opacity-0"
                         >
                             <span>Pages</span>
                             <ChevronDown
@@ -116,37 +132,22 @@ export default function Navbar() {
                         </button>
                         <div className={`overflow-hidden transition-all duration-300 ${isPagesOpen ? 'max-h-96 mt-2' : 'max-h-0'}`}>
                             <div className="ml-4 space-y-1">
-                                {[
-                                    "About",
-                                    "Services",
-                                    "Single Destination",
-                                    "Testimonials",
-                                    "Contact",
-                                    "Blog",
-                                    "Post",
-                                ].map((item, index) => (
-                                    <a
-                                        key={item}
-                                        href="#"
-                                        className="block py-2 px-4 text-sm text-gray-600 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-all duration-200 animate-great-slide-up"
-                                        style={{ animationDelay: `${600 + index * 100}ms`, opacity: 0 }}
+                                {pageLinks.map((item, index) => (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className={`block py-2 px-4 text-sm text-gray-600 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-all duration-200 animate-great-slide-up [animation-delay:${600 + index * 100}ms] opacity-0 ${pathname === item.href ? "text-orange-500" : ""}`}
                                     >
-                                        {item}
-                                    </a>
+                                        {item.name}
+                                    </Link>
                                 ))}
                             </div>
                         </div>
                     </div>
-
-                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200 animate-great-slide-up [animation-delay:1350ms] opacity-0">
-                        Packages
-                    </a>
-                    <a href="#" className="py-3 px-4 text-base font-medium hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-200 animate-great-slide-up [animation-delay:1500ms] opacity-0">
-                        Destination
-                    </a>
                 </nav>
 
                 <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-3">
+                    {/* Keep as-is per your instruction */}
                     <button className="py-3 px-6 text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200 animate-great-slide-up [animation-delay:1650ms] opacity-0">
                         Blog
                     </button>
