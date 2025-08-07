@@ -6,11 +6,12 @@ import BookNow from "@/components/BookNow";
 import Destination from "@/components/Destination";
 import Questions from "@/components/Questions";
 import Blogs from "@/components/Blogs"
+import Footer from "@/components/Footer";
 
 export default function Home() {
     return (
         <>
-            <main className="px-2">
+            <main>
                 <Navbar />
                 <HeroSection />
                 <ListSection />
@@ -19,6 +20,7 @@ export default function Home() {
                 <Destination />
                 <Questions />
                 <Blogs />
+                <Footer />
             </main>
         </>
     );

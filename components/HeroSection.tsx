@@ -4,7 +4,7 @@ import { Mouse } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-[600px] sm:min-h-[700px] lg:h-[800px] overflow-hidden rounded-2xl">
+    <section className="relative mx-2 min-h-[600px] sm:min-h-[700px] lg:h-[800px] overflow-hidden rounded-2xl">
       <Image
         src="/Images/hero.png"
         alt="hero"
