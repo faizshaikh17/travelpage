@@ -60,55 +60,56 @@ export default function Questions() {
   };
 
   return (
-    <section
-      ref={containerRef}
-      className="relative w-full overflow-hidden px-4 sm:px-6 lg:px-28 py-16 sm:py-24 lg:py-32 bg-[#FAFAFA] rounded-2xl"
-    >
-      <div className="flex flex-col text-center items-center fade-up space-y-8">
-        <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%]">
-          Frequently Asked Questions
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg text-neutral-600 max-w-2xl">
-          From quick answers to in-depth guidance, we’re committed to making sure you feel confident
-        </p>
-      </div>
+    <>
+      <section
+        ref={containerRef}
+        className="relative w-full overflow-hidden px-4 sm:px-6 lg:px-28 py-16 sm:py-24 lg:py-32 bg-[#FAFAFA] rounded-2xl"
+      >
+        <div className="flex flex-col text-center items-center fade-up space-y-8">
+          <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%]">
+            Frequently Asked Questions
+          </p>
+          <p className="text-sm sm:text-base lg:text-lg text-neutral-600 max-w-2xl">
+            From quick answers to in-depth guidance, we’re committed to making sure you feel confident
+          </p>
+        </div>
 
-      <div className="fade-up max-w-5xl mx-auto mt-12 sm:mt-16 lg:mt-24 divide-y divide-neutral-300">
-        {faqs.map((item, index) => {
-          const isOpen = openIndex === index;
+        <div className="fade-up max-w-5xl mx-auto mt-12 sm:mt-16 lg:mt-24 divide-y divide-neutral-300">
+          {faqs.map((item, index) => {
+            const isOpen = openIndex === index;
 
-          return (
-            <div key={index} className="py-6">
-              <button
-                onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between text-left text-sm sm:text-base lg:text-2xl font-semibold text-black"
-              >
-                <span className="flex-1 pr-4">{item.question}</span>
-                {isOpen ? (
-                  <Minus className="w-5 h-5 sm:w-6 sm:h-6 text-black shrink-0" />
-                ) : (
-                  <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-black shrink-0" />
-                )}
-              </button>
+            return (
+              <div key={index} className="py-6">
+                <button
+                  onClick={() => toggle(index)}
+                  className="w-full flex items-center justify-between text-left text-sm sm:text-base lg:text-2xl font-semibold text-black"
+                >
+                  <span className="flex-1 pr-4">{item.question}</span>
+                  {isOpen ? (
+                    <Minus className="w-5 h-5 sm:w-6 sm:h-6 text-black shrink-0" />
+                  ) : (
+                    <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-black shrink-0" />
+                  )}
+                </button>
 
-              <div
-                className="overflow-hidden transition-all duration-500 ease-in-out"
-                style={{
-                  maxHeight: isOpen ? '300px' : '0px',
-                  opacity: isOpen ? 1 : 0,
-                  marginTop: isOpen ? '0.5rem' : '0rem'
-                }}
-              >
-                <div className="text-sm sm:text-base lg:text-lg text-neutral-600">
-                  {item.answer}
+                <div
+                  className="overflow-hidden transition-all duration-500 ease-in-out"
+                  style={{
+                    maxHeight: isOpen ? '300px' : '0px',
+                    opacity: isOpen ? 1 : 0,
+                    marginTop: isOpen ? '0.5rem' : '0rem'
+                  }}
+                >
+                  <div className="text-sm sm:text-base lg:text-lg text-neutral-600">
+                    {item.answer}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
 
-      <style jsx>{`
+        <style jsx>{`
         .fade-up {
           opacity: 0;
           transform: translateY(150px);
@@ -119,6 +120,7 @@ export default function Questions() {
           transform: translateY(0);
         }
       `}</style>
-    </section>
+      </section>
+    </>
   );
 }
