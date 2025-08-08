@@ -194,7 +194,7 @@ export default function Post() {
                         </button>
                     </div>
 
-                    <div className="bg-white rounded-2xl shadow-lg p-6 lg:p-8">
+                    <div className="bg-neutral-100 rounded-2xl shadow-lg p-6 lg:p-8">
                         <h3 className="text-2xl font-semibold mb-6 text-gray-900 text-center">Contact Us</h3>
                         <form className="flex flex-col gap-5">
                             <label className="flex flex-col">
@@ -202,7 +202,7 @@ export default function Post() {
                                 <input
                                     type="text"
                                     defaultValue="John Doe"
-                                    className="mt-1 border text-neutral-400 border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                                    className="mt-1 border text-neutral-400 bg-white border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
                                     placeholder="Your Name"
                                 />
                             </label>
@@ -212,7 +212,7 @@ export default function Post() {
                                 <input
                                     type="email"
                                     defaultValue="john@doe.com"
-                                    className="mt-1 border border-gray-300 text-neutral-400 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                                    className="mt-1 border border-gray-300 bg-white text-neutral-400 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
                                     placeholder="john@doe.com"
                                 />
                             </label>
@@ -222,7 +222,7 @@ export default function Post() {
                                 <input
                                     type="tel"
                                     defaultValue="081 234 567 89"
-                                    className="mt-1 border border-gray-300 text-neutral-400 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                                    className="mt-1 border border-gray-300 bg-white text-neutral-400 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
                                     placeholder="081 234 567 89"
                                 />
                             </label>
@@ -232,7 +232,7 @@ export default function Post() {
                                 <textarea
                                     rows={4}
                                     defaultValue="Your message here"
-                                    className="mt-1 border border-gray-300 text-neutral-400 rounded-md px-4 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
+                                    className="mt-1 border border-gray-300 bg-white text-neutral-400 rounded-md px-4 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
                                     placeholder="Your message here"
                                 />
                             </label>
