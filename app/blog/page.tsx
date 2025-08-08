@@ -48,7 +48,7 @@ const blogPosts = [
     },
 ];
 
-export default function HeroSection() {
+export default function Blog() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
