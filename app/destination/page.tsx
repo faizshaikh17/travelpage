@@ -20,14 +20,14 @@ const destinations = [
 
 const reviews = [
   { id: 1, rating: 5, text: "This was the best travel experience I’ve ever had. The beaches were stunning, the water crystal clear, and the tour was perfectly organized.", img: "/Images/person1.webp", name: "Sophia Miller", role: "Tour Guide" },
-  { id: 2, rating: 5, text: "Nomad made it so easy to plan my beach getaway. Everything was taken care of, I just showed up and enjoyed paradise.", img: "/Images/person2.webp", name: "Liam Johnson", role: "Tour Guide" },
-  { id: 3, rating: 5, text: "From booking to the last day, everything was smooth. The team was friendly, and the location exceeded my expectations.", img: "/Images/person3.webp", name: "Olivia Brown", role: "Tour Guide" },
-  { id: 4, rating: 5, text: "The itinerary was well-balanced between relaxation and exploration. Highly recommend Nomad to anyone looking for a stress-free holiday.", img: "/Images/person1.webp", name: "Ethan Davis", role: "Tour Guide" },
+  { id: 2, rating: 5, text: "Nomad made it so easy to plan my beach getaway. Everything was taken care of, I just showed up and enjoyed paradise.", img: "/Images/person2.webp", name: "Liam Johnson", role: "Event Planner" },
+  { id: 3, rating: 5, text: "From booking to the last day, everything was smooth. The team was friendly, and the location exceeded my expectations.", img: "/Images/person3.webp", name: "Olivia Brown", role: "Traveller" },
+  { id: 4, rating: 5, text: "The itinerary was well-balanced between relaxation and exploration. Highly recommend Nomad to anyone looking for a stress-free holiday.", img: "/Images/person1.webp", name: "Ethan Davis", role: "Event Planner" },
   { id: 5, rating: 5, text: "Every detail was thought of, and the guide was incredibly knowledgeable about the local culture.", img: "/Images/person2.webp", name: "Ava Wilson", role: "Tour Guide" },
-  { id: 6, rating: 5, text: "I can’t believe how much I got to see in just a week. Definitely booking my next trip with Nomad.", img: "/Images/person3.webp", name: "Noah Smith", role: "Tour Guide" },
-  { id: 7, rating: 5, text: "A perfect escape from the city. The sunsets were magical, and the beach was pristine.", img: "/Images/person1.webp", name: "Isabella Jones", role: "Tour Guide" },
+  { id: 6, rating: 5, text: "I can’t believe how much I got to see in just a week. Definitely booking my next trip with Nomad.", img: "/Images/person3.webp", name: "Noah Smith", role: "Traveller" },
+  { id: 7, rating: 5, text: "A perfect escape from the city. The sunsets were magical, and the beach was pristine.", img: "/Images/person1.webp", name: "Isabella Jones", role: "Event Planner" },
   { id: 8, rating: 5, text: "The accommodations were fantastic, and the food was fresh and delicious every day.", img: "/Images/person2.webp", name: "Mason Taylor", role: "Tour Guide" },
-  { id: 9, rating: 5, text: "Every moment felt like a dream. Nomad really knows how to make a beach vacation special.", img: "/Images/person3.webp", name: "Mia Anderson", role: "Tour Guide" }
+  { id: 9, rating: 5, text: "Every moment felt like a dream. Nomad really knows how to make a beach vacation special.", img: "/Images/person3.webp", name: "Mia Anderson", role: "Traveller" }
 ];
 
 export default function Page() {
@@ -55,7 +55,7 @@ export default function Page() {
       <section className="relative mx-2 min-h-[300px] sm:min-h-[400px] lg:h-[500px] overflow-hidden rounded-2xl">
         <Image src="/Images/dest4.webp" alt="hero" fill priority quality={85} className="z-0 object-cover object-left" />
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-3xl sm:text-[6.5rem] font-bold drop-shadow-lg">Destination</h1>
+          <h1 className="package-fade text-white text-3xl sm:text-[6.5rem] font-bold drop-shadow-lg">Destination</h1>
         </div>
       </section>
 
@@ -103,7 +103,7 @@ export default function Page() {
         <div className="relative">
           <div className="flex flex-col sm:flex-row gap-6 overflow-hidden">
             {reviews.slice(currentIndex, currentIndex + 3).map((review) => (
-              <div key={review.id} className="flex flex-col justify-between bg-white rounded-2xl p-6 w-full sm:w-1/3 min-w-[260px]">
+              <div key={review.id} className="flex flex-col border border-neutral-200 justify-between bg-white rounded-2xl p-6 w-full sm:w-1/3 min-w-[260px]">
                 <div className="flex text-yellow-500 mb-4">{[...Array(review.rating)].map((_, i) => (<Star key={i} size={18} fill="currentColor" />))}</div>
                 <p className="text-neutral-600 text-base sm:text-lg mb-6 leading-relaxed">{review.text}</p>
                 <div className="flex items-center justify-between">
@@ -126,6 +126,19 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <style jsx global>{`
+  .package-fade {
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeUp 1s ease-out forwards;
+  }
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`}</style>
     </>
   );
 }

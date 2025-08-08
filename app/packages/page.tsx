@@ -21,39 +21,44 @@ const packages = [
 ];
 
 export default function Page() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const elements = containerRef.current?.querySelectorAll(".fade-up, .card-fade-up");
-    const observer = new IntersectionObserver((entries) => {
+    const root = containerRef.current;
+    if (!root) return;
+    const nodes = Array.from(root.querySelectorAll<HTMLElement>(".fade-up, .card-fade-up, .package-fade-up"));
+    if (!nodes.length) return;
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target as HTMLElement;
-          const index = parseInt(el.dataset.index || "0");
-          const delay = el.classList.contains("card-fade-up") ? index * 200 : 0;
-          setTimeout(() => el.classList.add("in-view"), delay);
-        }
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const idx = Number(el.dataset.index ?? 0);
+        const baseDelay = el.classList.contains("card-fade-up") || el.classList.contains("package-fade-up") ? 140 : 0;
+        const delay = baseDelay ? idx * baseDelay : 0;
+        setTimeout(() => el.classList.add("in-view"), delay);
+        obs.unobserve(el);
       });
-    }, { threshold: 0.2 });
-    elements?.forEach((el) => observer.observe(el));
-    return () => elements?.forEach((el) => observer.unobserve(el));
+    }, { threshold: 0.18, root: null });
+    nodes.forEach((n) => observer.observe(n));
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <>
+    <div ref={containerRef}>
       <section className="relative mx-2 min-h-[300px] sm:min-h-[400px] lg:h-[500px] overflow-hidden rounded-2xl">
         <Image src="/Images/hero.png" alt="hero" fill priority quality={85} className="z-0 object-cover object-left" />
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-3xl sm:text-[6.5rem] font-bold drop-shadow-lg">Package</h1>
+          <h1 className="package-fade text-white text-3xl sm:text-[6.5rem] font-bold drop-shadow-lg">Package</h1>
         </div>
       </section>
 
       <section className="mx-auto px-4 sm:px-6 lg:px-30 py-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="flex py-14 flex-col text-center items-center fade-up sm:col-span-2 lg:col-span-3">
+        <div className="flex py-14 flex-col text-center items-center fade-up sm:col-span-2 lg:col-span-3" data-index={0}>
           <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%]">Plan Your Escape Today</p>
         </div>
+
         {packages.map((pkg, idx) => (
-          <div key={idx} className="group relative w-full rounded-2xl border border-neutral-300 overflow-hidden shadow-md bg-white flex-shrink-0">
+          <div key={idx} data-index={idx} className="group package-fade-up relative w-full rounded-2xl border border-neutral-300 overflow-hidden shadow-md bg-white">
             <div className="relative h-56 w-full overflow-hidden">
               <Image src={pkg.image} alt={pkg.title} fill className="object-cover rounded-2xl transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-1" priority quality={85} />
               {pkg.recommended && <span className="absolute top-0 right-0 bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-bl-xl shadow-md z-20">Recommended</span>}
@@ -87,11 +92,11 @@ export default function Page() {
 
       <section className="w-full space-y-6 mx-auto px-4 sm:px-6 lg:px-30 py-16">
         <div className="flex flex-col sm:flex-row py-10 w-full justify-between items-start sm:items-center gap-6 sm:gap-4 lg:gap-0">
-          <div className="flex flex-col gap-2 fade-up">
+          <div className="flex flex-col gap-2 fade-up" data-index={100}>
             <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%]">Your Journey, Our</p>
             <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%]">Priority Always</p>
           </div>
-          <p className="text-sm sm:text-base lg:text-lg max-w-full sm:max-w-sm lg:max-w-lg font-light leading-relaxed text-neutral-500 fade-up">
+          <p className="text-sm sm:text-base lg:text-lg max-w-full sm:max-w-sm lg:max-w-lg font-light leading-relaxed text-neutral-500 fade-up" data-index={101}>
             Nomad is built on a passion for <br className="hidden sm:block" /> exploration and a commitment to <br className="hidden sm:block" /> delivering unforgettable experiences.
           </p>
         </div>
@@ -133,6 +138,38 @@ export default function Page() {
       </section>
 
       <Questions />
-    </>
+
+      <style jsx global>{`
+        .fade-up, .card-fade-up, .package-fade-up {
+          opacity: 0;
+          transform: translateY(40px);
+          transition: opacity 700ms cubic-bezier(.16,.84,.3,1), transform 700ms cubic-bezier(.16,.84,.3,1);
+          will-change: opacity, transform;
+        }
+        .fade-up.in-view, .card-fade-up.in-view, .package-fade-up.in-view {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        @media (max-width: 640px) {
+          :root {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+        }
+
+        .package-fade {
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeUp 1s ease-out forwards;
+  }
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+      `}</style>
+    </div>
+
   );
 }
