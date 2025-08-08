@@ -27,7 +27,7 @@ export default function FullPageFooter() {
         <footer className="bg-[#1B1917] mt-40 mx-4 sm:mx-6 rounded-2xl relative z-10">
           <div className="mx-auto px-4 sm:px-6 lg:px-10 py-10 flex flex-col gap-10 max-w-[1440px]">
             <div className="flex flex-col lg:flex-row justify-between gap-10 text-sm w-full">
-              <div className="flex flex-wrap justify-center lg:justify-start gap-8 sm:gap-16 w-full lg:w-auto min-w-0">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:flex lg:flex-row justify-center lg:justify-start gap-8 sm:gap-16 w-full lg:w-auto min-w-0">
                 {[
                   {
                     title: 'General',
@@ -57,7 +57,7 @@ export default function FullPageFooter() {
                     <h3 className="text-lg text-neutral-500 uppercase mb-2">
                       {title}
                     </h3>
-                    <ul className="space-y-3 sm:space-y-4 text-base">
+                    <ul className="space-y-3 sm:space-y-4 sm:text-base text-sm">
                       {links.map((link, idx) => (
                         <li key={idx}>
                           <Link
