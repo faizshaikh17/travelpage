@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { CalendarDays, Star, Umbrella } from "lucide-react";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 const destinations = [
   {
@@ -133,9 +134,9 @@ export default function HeroSection() {
                     {item.duration}
                   </span>
                 </div>
-                <button className="w-full sm:w-auto py-2 sm:py-3 px-4 sm:px-6 text-sm sm:text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200">
+                <Link href={'/single-destination'} className="w-full sm:w-auto py-2 sm:py-3 px-4 sm:px-6 text-sm sm:text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200">
                   Book now
-                </button>
+                </Link>
               </div>
             </div>
           </div>

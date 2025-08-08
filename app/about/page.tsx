@@ -2,7 +2,58 @@
 import Image from "next/image";
 import ItenarySection from "@/components/ItenarySection";
 import Link from "next/link";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+function AnimatedNumber({ value, suffix = '', className = '' }: { value: number; suffix?: string; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [displayValue, setDisplayValue] = useState(0);
+  const started = useRef(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    let animationFrameId: number;
+    let startTime: number | null = null;
+
+    function animate(time: number) {
+      if (!startTime) startTime = time;
+      const elapsed = time - startTime;
+      const duration = 1500; // animation duration in ms
+      const progress = Math.min(elapsed / duration, 1);
+      const currentVal = Math.floor(progress * value);
+      setDisplayValue(currentVal);
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setDisplayValue(value);
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !started.current) {
+            started.current = true;
+            animationFrameId = requestAnimationFrame(animate);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [value]);
+
+  return (
+    <div ref={ref} className={className}>
+      {displayValue.toLocaleString()}
+      {suffix}
+    </div>
+  );
+}
 
 export default function JourneySection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -27,10 +78,10 @@ export default function JourneySection() {
   }, []);
 
   const awards = [
-    { subheading: "Global Travel Awards", heading: "Best Customized Travel Experience", year: "2025" },
-    { subheading: "Wanderlust Choice", heading: "Top Adventure Tour Agency", year: "2025" },
-    { subheading: "Culture Connect Panel", heading: "Most Loved Local Tours", year: "2024" },
-    { subheading: "Global Trotter Awards", heading: "Top-Rated Travel Agency 2024", year: "2024" },
+    { subheading: "Global Travel Awards", heading: "Best Customized Travel Experience", year: 2025 },
+    { subheading: "Wanderlust Choice", heading: "Top Adventure Tour Agency", year: 2025 },
+    { subheading: "Culture Connect Panel", heading: "Most Loved Local Tours", year: 2024 },
+    { subheading: "Global Trotter Awards", heading: "Top-Rated Travel Agency 2024", year: 2024 },
   ];
 
   return (
@@ -45,7 +96,7 @@ export default function JourneySection() {
           className="z-0 object-cover object-left"
         />
         <div className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center">
-          <h1 className="package-fade text-white text-3xl sm:text-[5rem] font-bold drop-shadow-lg leading-tight">
+          <h1 className="package-fade text-white text-3xl sm:text-[6.5rem] font-bold drop-shadow-lg leading-tight">
             About
           </h1>
         </div>
@@ -92,19 +143,19 @@ export default function JourneySection() {
 
         <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-12 text-center">
           <div>
-            <div className="text-6xl font-extrabold">532+</div>
+            <AnimatedNumber value={532} suffix="+" className="text-6xl font-extrabold" />
             <div className="uppercase font-semibold text-sm text-gray-600 mt-2">Happy Travelers</div>
           </div>
           <div>
-            <div className="text-6xl font-extrabold">99%</div>
+            <AnimatedNumber value={99} suffix="%" className="text-6xl font-extrabold" />
             <div className="uppercase font-semibold text-sm tracking-wide text-gray-600 mt-2">Booking Success</div>
           </div>
           <div>
-            <div className="text-6xl font-extrabold">14K+</div>
+            <AnimatedNumber value={14000} suffix="+" className="text-6xl font-extrabold" />
             <div className="uppercase font-semibold text-sm tracking-wide text-gray-600 mt-2">Miles Traveled</div>
           </div>
           <div>
-            <div className="text-6xl font-extrabold">178+</div>
+            <AnimatedNumber value={178} suffix="+" className="text-6xl font-extrabold" />
             <div className="uppercase font-semibold text-sm tracking-wide text-gray-600 mt-2">Global Partners</div>
           </div>
         </div>
@@ -163,17 +214,28 @@ export default function JourneySection() {
         </div>
 
         <style jsx>{`
-          .fade-up,
-          .card-fade-up {
-            opacity: 0.5;
-            transform: translateY(150px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-          }
-          .in-view {
+        .fade-up,
+        .card-fade-up {
+          opacity: 0;
+          transform: translateY(150px);
+          transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .in-view {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .package-fade {
+          opacity: 0;
+          transform: translateY(40px);
+          animation: fadeUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeUp {
+          to {
             opacity: 1;
             transform: translateY(0);
           }
-        `}</style>
+        }
+      `}</style>
       </section>
     </>
   );
