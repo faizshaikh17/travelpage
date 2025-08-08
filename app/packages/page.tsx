@@ -44,7 +44,7 @@ export default function Page() {
       <section className="relative mx-2 min-h-[300px] sm:min-h-[400px] lg:h-[500px] overflow-hidden rounded-2xl">
         <Image src="/Images/hero.png" alt="hero" fill priority quality={85} className="z-0 object-cover object-left" />
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <h1 className="text-white text-3xl sm:text-[7rem] font-bold drop-shadow-lg">Package</h1>
+          <h1 className="text-white text-3xl sm:text-[6.5rem] font-bold drop-shadow-lg">Package</h1>
         </div>
       </section>
 
