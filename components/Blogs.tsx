@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { CalendarDays, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const blogPosts = [
   {
@@ -69,9 +70,9 @@ export default function HeroSection() {
             Inspiration, Tips & Stories to Help You Travel Better
           </span>
         </p>
-        <button className="py-3 px-6 text-sm sm:text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-500 transition-all duration-200 whitespace-nowrap fade-up">
+        <Link href={'/home'} className="py-3 px-6 text-sm sm:text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-500 transition-all duration-200 whitespace-nowrap fade-up">
           View more
-        </button>
+        </Link>
       </div>
 
       {/* Blog Cards */}

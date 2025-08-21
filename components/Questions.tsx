@@ -69,7 +69,7 @@ export default function Questions() {
           <p className="text-2xl sm:text-3xl lg:text-[3.5rem] font-semibold leading-tight lg:leading-[100%]">
             Frequently Asked Questions
           </p>
-          <p className="text-sm sm:text-base lg:text-lg text-neutral-600 max-w-2xl">
+          <p className="text-sm sm:text-base lg:text-lg text-neutral-600 max-w-4xl">
             From quick answers to in-depth guidance, we’re committed to making sure you feel confident
           </p>
         </div>
@@ -86,9 +86,9 @@ export default function Questions() {
                 >
                   <span className="flex-1 pr-4">{item.question}</span>
                   {isOpen ? (
-                    <Minus className="w-5 h-5 sm:w-6 sm:h-6 text-black shrink-0" />
+                    <Minus className="w-5 h-5 sm:w-6 sm:h-6 text-black/50 shrink-0" />
                   ) : (
-                    <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-black shrink-0" />
+                    <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-black/50 shrink-0" />
                   )}
                 </button>
 

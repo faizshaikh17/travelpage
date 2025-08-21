@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { CalendarDays, Star, Umbrella } from 'lucide-react';
+import Link from 'next/link';
 
 const destinations = [
   {
@@ -91,7 +92,7 @@ export default function Destination() {
       </div>
 
       <div className="flex flex-col lg:flex-row items-start lg:items-stretch justify-center gap-8 w-full">
-        <div className="relative w-full lg:w-[35rem] aspect-[4/3] sm:aspect-[5/4] lg:h-[56rem] card-fade-up" data-index={destinations.length}>
+        <div className="relative w-full lg:w-[35rem] aspect-[4/3] sm:aspect-[5/4] lg:h-[59rem] card-fade-up" data-index={destinations.length}>
           <Image
             src="/Images/destination.webp"
             alt="Itinerary"
@@ -106,9 +107,9 @@ export default function Destination() {
             <span>Awaits At Every</span>
             <span>Destination.</span>
           </div>
-          <button className="absolute bottom-6 left-6 py-3 px-6 text-sm sm:text-base font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition fade-up">
+          <Link href={'/home'} className="absolute bottom-6 left-6 py-3 px-6 text-sm sm:text-base font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition fade-up">
             View More Destinations
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full lg:w-[42rem]">
@@ -152,15 +153,15 @@ export default function Destination() {
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2">
+                <div className="flex flex-col mt-4 pt-6 sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-neutral-100">
                   <div className="text-neutral-900 font-semibold text-sm leading-tight">
                     {item.price}
                     <br />
                     <span className="text-xs text-neutral-500 font-normal">{item.duration}</span>
                   </div>
-                  <button className="w-full sm:w-auto py-2 px-4 text-sm font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200">
+                  <Link href={'/home'} className="w-full sm:w-auto py-2 px-4 text-sm font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200">
                     Book now
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

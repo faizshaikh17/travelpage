@@ -81,21 +81,21 @@ export default function Navbar() {
           </ul>
         </div>
 
-        <div className="flex items-center justify-center gap-1.5 absolute left-1/2 transform -translate-x-1/2 lg:relative lg:left-auto lg:transform-none">
+        <Link href={'/home'} className="flex cursor-pointer items-center justify-center gap-1.5 absolute left-1/2 transform -translate-x-1/2 lg:relative lg:left-auto lg:transform-none">
           <CompassIcon
             size={24}
             className="transition-transform duration-300 hover:rotate-180"
           />
           <p className="text-xl lg:text-2xl font-medium">Nomad</p>
-        </div>
+        </Link>
 
         <div className="hidden lg:flex justify-center items-center h-full text-[1.1rem] gap-2.5">
-          <span className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 cursor-pointer">
+          <Link href={'/blog'} className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200 cursor-pointer">
             Blog
-          </span>
-          <span className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg bg-orange-500 hover:bg-orange-600 text-white transition-all duration-200 cursor-pointer">
+          </Link>
+          <Link href={'/contact'} className="border border-neutral-200 h-full flex items-center w-32 justify-center rounded-lg bg-orange-500 hover:bg-orange-600 text-white transition-all duration-200 cursor-pointer">
             Contact
-          </span>
+          </Link>
         </div>
       </header>
 
@@ -105,10 +105,10 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between p-6 border-b">
-          <div className="flex items-center gap-2">
+          <Link href={'/home'} className="flex cursor-pointer items-center gap-2">
             <CompassIcon size={24} />
             <span className="text-xl font-medium">Nomad</span>
-          </div>
+          </Link>
           <button
             onClick={toggleMenu}
             className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
@@ -171,12 +171,12 @@ export default function Navbar() {
         </nav>
 
         <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-3">
-          <button className="py-3 px-6 text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200">
+          <Link href={'/blog'} className="py-3 px-6 text-base font-medium border border-neutral-200 rounded-lg hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-200">
             Blog
-          </button>
-          <button className="py-3 px-6 text-base font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-all duration-200">
+          </Link>
+          <Link href={'/contact'} className="py-3 px-6 text-base font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-all duration-200">
             Contact
-          </button>
+          </Link>
         </div>
       </div>
 

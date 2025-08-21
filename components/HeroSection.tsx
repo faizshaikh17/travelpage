@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image";
 import { Mouse } from "lucide-react";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -55,10 +56,10 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 cursor-pointer text-white">
+        <Link href={'/destination'} className="flex items-center justify-center gap-2 cursor-pointer text-white">
           <Mouse size={20} className="sm:w-[22px] sm:h-[22px]" />
           <span className="text-base sm:text-lg font-medium animate-great-slide-up [animation-delay:1050ms] opacity-0">Get Started</span>
-        </div>
+        </Link>
       </div>
 
       <div className="hidden lg:flex relative z-10 flex-col items-end justify-start h-full text-white text-left mt-40 mr-34">
@@ -105,10 +106,10 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="hidden lg:flex absolute bottom-14 right-28 z-10 items-center gap-2 cursor-pointer text-white">
+      <Link href={'/destination'} className="hidden lg:flex absolute bottom-14 right-28 z-10 items-center gap-2 cursor-pointer text-white">
         <Mouse size={22} />
         <span className="text-lg animate-great-slide-up [animation-delay:900ms] opacity-0">Get Started</span>
-      </div>
+      </Link>
 
       <style jsx>{`
         @keyframes great-slide-up {

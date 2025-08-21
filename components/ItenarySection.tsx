@@ -74,7 +74,6 @@ export default function ItenarySection() {
       <div className="h-[0.01rem] my-8 sm:my-12 lg:my-16 w-full bg-neutral-300 fade-up"></div>
 
       <div className="flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-20">
-        {/* Feature Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full lg:max-w-xl">
           {features.map((feature, idx) => (
             <div
@@ -96,10 +95,9 @@ export default function ItenarySection() {
           ))}
         </div>
 
-        {/* Image */}
         <div className="relative w-full max-w-md sm:max-w-lg lg:w-[35rem] aspect-[35/33] lg:h-[33rem] card-fade-up" data-index={features.length}>
           <Image
-            src="/Images/itenary.webp"
+            src="/Images/Itenary.webp"
             alt="Itinerary Image"
             fill
             className="object-cover rounded-2xl"

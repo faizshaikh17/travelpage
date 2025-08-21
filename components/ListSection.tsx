@@ -126,7 +126,7 @@ export default function HeroSection() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 pt-2">
+              <div className="flex flex-col sm:flex-row border-t border-neutral-100 mt-4 pt-6 items-start sm:items-center justify-between gap-3 sm:gap-0">
                 <div className="text-neutral-900 font-semibold text-sm sm:text-base leading-tight">
                   {item.price}
                   <br />

@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 
 const sliderImages = [
   "/Images/smilingMan.webp",
@@ -68,10 +69,11 @@ export default function BookNow() {
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white fade-up leading-tight">
           Find Your Perfect <br /> Destination in Minutes
         </h2>
-
-        <button className="py-3 px-6 text-base font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition fade-up">
-          Book now
-        </button>
+        <Link href={'/home'} >
+          <button className="py-3 px-6 text-base font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition fade-up">
+            Book now
+          </button>
+        </Link>
 
         <div className="w-full mt-40 fade-up">
           <div className="flex flex-col sm:flex-row sm:justify-center sm:gap-4 gap-4">
