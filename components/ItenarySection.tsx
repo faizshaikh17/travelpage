@@ -59,7 +59,7 @@ export default function ItenarySection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#FAFAFA] min-h-[800px] space-y-6 sm:space-y-8 lg:space-y-16 sm:min-h-[900px] lg:h-[1000px] overflow-hidden px-4 sm:px-8 lg:px-28 py-12 sm:py-16 lg:py-28 rounded-2xl"
+      className="relative w-full min-w-[320px] bg-[#FAFAFA] min-h-[800px] space-y-6 sm:space-y-8 lg:space-y-16 sm:min-h-[900px] lg:h-[1000px] overflow-hidden px-4 sm:px-8 lg:px-28 py-12 sm:py-16 lg:py-28 rounded-2xl"
     >
       <div className="flex flex-col sm:flex-row w-full justify-between items-start sm:items-center gap-6 sm:gap-4 lg:gap-0">
         <div className="flex flex-col gap-2 fade-up">
@@ -79,7 +79,7 @@ export default function ItenarySection() {
             <div
               key={feature.id}
               data-index={idx}
-              className="card-fade-up bg-white border border-neutral-200 rounded-2xl p-4 sm:p-5 w-full shadow-xs h-full flex flex-col gap-3 sm:gap-4"
+              className="card-fade-up bg-white border border-neutral-200 rounded-2xl p-4 sm:p-5 w-full min-w-[280px] shadow-xs h-full flex flex-col gap-3 sm:gap-4"
             >
               <div className="flex w-full items-center justify-between">
                 <div className="flex items-center w-full justify-between">
